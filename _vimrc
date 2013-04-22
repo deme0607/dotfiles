@@ -23,11 +23,11 @@ if has('vim_starting')
 endif
 
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/neocomplecache'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neosnippet'
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'hotchpotch/perldoc-vim'
 NeoBundle 'Shougo/neocomplecache'
-NeoBundle 'Shougo/neosnippets'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tomasr/molokai'
 
