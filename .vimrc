@@ -10,8 +10,10 @@ set fileencodings=utf8,cp932,euc-jp
 set laststatus=2
 set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%=%8l:%c%8P
 set nocompatible
-
 set backspace=2
+set cursorline
+highlight cursorline term=reverse cterm=reverse
+
 
 filetype off
 
@@ -73,3 +75,17 @@ imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 nmap <Leader>r <plug>(quickrun)
+
+NeoBundle 'nathanaelkane/vim-indent-guides'
+"vim立ち上げ時に自動的にvim-indent-guidesをオンにする。
+let g:indent_guides_enable_on_vim_startup = 1
+"autoで色付けするのはストップ
+let g:indent_guides_auto_colors = 0
+"色の変化幅（？）パーセンテージ
+let g:indent_guides_color_change_percent = 30
+"奇数行の色付け
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
+"偶数行の色付け
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=yellow
+"インデントの色付け幅
+let g:indent_guides_guide_size = 1
