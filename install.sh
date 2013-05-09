@@ -1,7 +1,15 @@
 #!/bin/bash
 
+# Install Modules
+if [`uname`="Darwin"]; then
+    brew install bash-completion
+elif [`uname`="Linux"]; then
+    sudo yum install bash-completion
+fi
+
+
 # Create symbolic links
-FILES=(.vim .vimrc .tmux.conf)
+FILES=(.bashrc .vim .vimrc .tmux.conf)
 
 for file in ${FILES[@]}
 do
