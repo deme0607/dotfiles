@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Install Modules
-if [`uname`="Darwin"]; then
+if [ `uname` = "Darwin" ]; then
     brew install bash-completion
-elif [`uname`="Linux"]; then
+elif [ `uname` = "Linux" ]; then
     sudo yum install bash-completion
 fi
 
