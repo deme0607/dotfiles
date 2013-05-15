@@ -8,7 +8,7 @@ set shiftwidth=4
 set softtabstop=4
 set fileencodings=utf8,cp932,euc-jp
 set laststatus=2
-set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%=%8l%{fugitive#statusline()}:%c%8P
+set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8l:%c%8P
 set nocompatible
 set backspace=2
 set cursorline
