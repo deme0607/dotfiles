@@ -8,7 +8,7 @@ set shiftwidth=4
 set softtabstop=4
 set fileencodings=utf8,cp932,euc-jp
 set laststatus=2
-set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%=%8l:%c%8P
+set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%=%8l%{fugitive#statusline()}:%c%8P
 set nocompatible
 set backspace=2
 set cursorline
@@ -46,27 +46,31 @@ let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
- " Use smartcase.
+" Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 " Use camel case completion.
 let g:neocomplcache_enable_camel_case_completion = 1
 " Select with <TAB>
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+" Close Popup Window
+inoremap <expr><C-e> neocomplcache#cancel_popup()
+" Select popup
+inoremap <expr><C-y> neocomplcache#close_popup()
 
 let g:neocomplcache_ctags_arguments_list = {
-	\ 'perl' : '-R -h ".pm"'
-	\ }
-			 
+    \ 'perl' : '-R -h ".pm"'
+\ }
+
 let g:neocomplcache_snippets_dir = "~/.vim/snippets"
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-	\ 'default'    : '',
-	\ 'perl'       : $HOME . '/.vim/dict/perl.dict'
-	\ }
+    \ 'default'    : '',
+    \ 'perl'       : $HOME . '/.vim/dict/perl.dict'
+\ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
-	let g:neocomplcache_keyword_patterns = {}
+    let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
@@ -89,3 +93,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=yellow
 "インデントの色付け幅
 let g:indent_guides_guide_size = 1
+
+"" for git
+NeoBundle 'tpope/vim-fugitive'
