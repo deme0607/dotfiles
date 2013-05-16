@@ -18,3 +18,6 @@ if [ -f $BASH_COMPLETION_DIR/git ]; then
 else
     export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
 fi
+
+EDITOR=/usr/local/bin/vim
+export EDITOR
