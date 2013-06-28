@@ -18,18 +18,6 @@ esac
 
 ## Default shell configuration
 #
-# set prompt
-#
-
-# for git
-autoload -Uz vcs_info
-precmd() {
-    psvar=()
-    LANG=en_US.UTF-8 vcs_info
-    psvar[1]=$vcs_info_msg_0_
-}
-PROMPT=$'%2F%n@%m%f %3F%~%f%1v\n%# '
-
 # auto change directory
 #
 setopt auto_cd
@@ -185,3 +173,16 @@ esac
 ## load user .zshrc configuration file
 #
 [ -f ${HOME}/.zshrc.mine ] && source ${HOME}/.zshrc.mine
+
+# set prompt
+#
+
+# for git
+autoload -Uz vcs_info
+precmd() {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    psvar[1]=$vcs_info_msg_0_
+}
+PROMPT=$'%2F%n@%m%f %3F%~%f%1v\n%# '
+
