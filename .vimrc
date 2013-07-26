@@ -23,8 +23,12 @@ if has('vim_starting')
     call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
+if filereadable($HOME . '/.vimrc.local')
+    source $HOME/.vimrc.local
+endif
+
 NeoBundle 'Shougo/neobundle.vim'
-" NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/neocomplcache'
 " NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', { 'build' : {
@@ -40,17 +44,17 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 
 " {{{
-if has("lua")
-  NeoBundleLazy 'Shougo/neocomplete', { 'autoload' : {
-        \   'insert' : 1,
-        \ }}
-else
-  NeoBundleLazy 'Shougo/neocomplete', {
-        \ 'autoload' : {
-        \   'insert' : 1,
-        \ },
-        \ }
-endif
+"if has("lua")
+"  NeoBundleLazy 'Shougo/neocomplete', { 'autoload' : {
+"        \   'insert' : 1,
+"        \ }}
+"else
+"  NeoBundleLazy 'Shougo/neocomplete', {
+"        \ 'autoload' : {
+"        \   'insert' : 1,
+"        \ },
+"        \ }
+"endif
 
 NeoBundleLazy 'Shougo/neosnippet', {
       \ 'autoload' : {
