@@ -16,7 +16,8 @@ fi
 if [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
     . /usr/share/git-core/contrib/completion/git-prompt.sh 
     export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
-elif [ -f $BASH_COMPLETION_DIR/git ]; then
+elif [ -f $BASH_COMPLETION_DIR/git-prompt.sh ]; then
+    . $BASH_COMPLETION_DIR/git-prompt.sh
     export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w$(__git_ps1) \n\[\033[01;34m\]\$\[\033[00m\] '
 else
     export PS1='\[\033[01;32m\]\u@\h\[\033[01;33m\] \w \n\[\033[01;34m\]\$\[\033[00m\] '
