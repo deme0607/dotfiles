@@ -2,10 +2,10 @@ set number
 set showmatch
 set autoindent
 set smartindent
-set tabstop=4
+set tabstop=2
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
 set fileencodings=utf8,cp932,euc-jp
 set laststatus=2
 set nocompatible
@@ -42,6 +42,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'scrooloose/nerdtree'
 
 " {{{
 "if has("lua")
