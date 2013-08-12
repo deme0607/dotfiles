@@ -39,7 +39,7 @@ NeoBundle 'Shougo/vimproc', { 'build' : {
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'hotchpotch/perldoc-vim'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'tomasr/molokai'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
@@ -121,7 +121,7 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 filetype plugin on
 filetype indent on
 
-colorscheme molokai
+colorscheme jellybeans
 
 " ----------------------------------
 " For neocomplcache
