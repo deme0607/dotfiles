@@ -43,6 +43,8 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'szw/vim-tags'
 
 " {{{
 "if has("lua")
@@ -189,3 +191,6 @@ let g:indent_guides_guide_size = 1
 
 " For vim-fugitive
 set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8l:%c%8P
+
+" vim-tags
+nnoremap <C-]> g<C-]>

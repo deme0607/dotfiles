@@ -10,7 +10,7 @@
 
 # Create symbolic links
 #FILES=(.bashrc .vim .vimrc .tmux.conf)
-FILES=(.bashrc .zshrc .vim .vimrc .tmux.conf)
+FILES=(.bashrc .zshrc .vim .vimrc .tmux.conf .ctags)
 
 for file in ${FILES[@]}
 do
