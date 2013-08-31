@@ -2,14 +2,11 @@ set number
 set showmatch
 set autoindent
 set smartindent
-set tabstop=2
 set expandtab
-set shiftwidth=2
-set softtabstop=2
 set fileencodings=utf8,cp932,euc-jp
 set laststatus=2
 set nocompatible
-set backspace=2
+set backspace=start,eol,indent
 set cursorline
 highlight cursorline term=reverse cterm=reverse
 syntax on
