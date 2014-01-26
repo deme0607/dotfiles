@@ -26,7 +26,5 @@ fi
 EDITOR=/usr/local/bin/vim
 export EDITOR
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
 alias vi=/usr/local/bin/vim
 alias tar=/usr/local/bin/tar

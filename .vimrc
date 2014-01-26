@@ -7,6 +7,7 @@ set fileencodings=utf8,cp932,euc-jp
 set laststatus=2
 set nocompatible
 set backspace=start,eol,indent
+set hlsearch
 set cursorline
 highlight cursorline term=reverse cterm=reverse
 syntax on
@@ -42,6 +43,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'szw/vim-tags'
+NeoBundle 'elzr/vim-json'
 
 " {{{
 "if has("lua")
@@ -136,7 +138,7 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
 " Use camel case completion.
-let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_camel_case_completion = 0
 " Select with <TAB>
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 " Close Popup Window
@@ -191,3 +193,6 @@ set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8
 
 " vim-tags
 nnoremap <C-]> g<C-]>
+
+" psgi perl syntax
+au BufNewFile,BufRead *.psgi set filetype=perl
