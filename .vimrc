@@ -9,7 +9,7 @@ set nocompatible
 set backspace=start,eol,indent
 set hlsearch
 set cursorline
-highlight cursorline term=reverse cterm=reverse
+" highlight cursorline term=reverse cterm=reverse
 syntax on
 
 filetype off
@@ -37,13 +37,35 @@ NeoBundle 'Shougo/vimproc', { 'build' : {
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'hotchpotch/perldoc-vim'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'szw/vim-tags'
 NeoBundle 'elzr/vim-json'
+NeoBundle 'sudo.vim'
+
+
+" ----------------------------------
+" For vim-indent-guides
+colorscheme default
+" vim立ち上げ時に自動的にvim-indent-guidesをオンにする。
+let g:indent_guides_enable_on_vim_startup = 1
+" autoで色付けするのはストップ
+let g:indent_guides_auto_colors = 0
+" 色の変化幅（？）パーセンテージ
+let g:indent_guides_color_change_percent = 30
+" 奇数行の色付け
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
+hi IndentGuidesOdd guibg=red ctermbg=3
+" 偶数行の色付け
+" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=yellow
+hi IndentGuidesEven guibg=green ctermbg=4
+" インデントの色付け幅
+let g:indent_guides_guide_size = 1
+
+
 
 " {{{
 "if has("lua")
@@ -66,40 +88,40 @@ NeoBundleLazy 'Shougo/neosnippet', {
       \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
       \ }}
 
-NeoBundle 'tpope/vim-rails', { 'autoload' : {
-      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
-
-NeoBundleLazy 'alpaca-tc/vim-endwise.git', {
-      \ 'autoload' : {
-      \   'insert' : 1,
-      \ }}
-
-NeoBundleLazy 'edsono/vim-matchit', { 'autoload' : {
-      \ 'filetypes': 'ruby',
-      \ 'mappings' : ['nx', '%'] }}
-
-NeoBundleLazy 'basyura/unite-rails', {
-      \ 'depends' : 'Shougo/unite.vim',
-      \ 'autoload' : {
-      \   'unite_sources' : [
-      \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
-      \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
-      \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
-      \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
-      \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
-      \     'rails/stylesheet', 'rails/view'
-      \   ]
-      \ }}
-
-NeoBundleLazy 'alpaca-tc/unite-rails_best_practices', {
-      \ 'depends' : 'Shougo/unite.vim',
-      \ 'build' : {
-      \    'mac': 'gem install rails_best_practices',
-      \    'unix': 'gem install rails_best_practices',
-      \ },
-      \ 'autoload': {
-      \   'unite_sources': 'rails_best_practices'
-      \ }}
+"NeoBundle 'tpope/vim-rails', { 'autoload' : {
+"      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
+"
+"NeoBundleLazy 'alpaca-tc/vim-endwise.git', {
+"      \ 'autoload' : {
+"      \   'insert' : 1,
+"      \ }}
+"
+"NeoBundleLazy 'edsono/vim-matchit', { 'autoload' : {
+"      \ 'filetypes': 'ruby',
+"      \ 'mappings' : ['nx', '%'] }}
+"
+"NeoBundleLazy 'basyura/unite-rails', {
+"      \ 'depends' : 'Shougo/unite.vim',
+"      \ 'autoload' : {
+"      \   'unite_sources' : [
+"      \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
+"      \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
+"      \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
+"      \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
+"      \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
+"      \     'rails/stylesheet', 'rails/view'
+"      \   ]
+"      \ }}
+"
+"NeoBundleLazy 'alpaca-tc/unite-rails_best_practices', {
+"      \ 'depends' : 'Shougo/unite.vim',
+"      \ 'build' : {
+"      \    'mac': 'gem install rails_best_practices',
+"      \    'unix': 'gem install rails_best_practices',
+"      \ },
+"      \ 'autoload': {
+"      \   'unite_sources': 'rails_best_practices'
+"      \ }}
 
 NeoBundle 'taka84u9/vim-ref-ri', {
       \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
@@ -122,7 +144,7 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 filetype plugin on
 filetype indent on
 
-colorscheme jellybeans
+colorscheme hybrid
 
 " ----------------------------------
 " For neocomplcache
@@ -172,22 +194,6 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 nmap <Leader>r <plug>(quickrun)
 
 
-" ----------------------------------
-" For vim-indent-guides
-" vim立ち上げ時に自動的にvim-indent-guidesをオンにする。
-let g:indent_guides_enable_on_vim_startup = 1
-" autoで色付けするのはストップ
-let g:indent_guides_auto_colors = 0
-" 色の変化幅（？）パーセンテージ
-let g:indent_guides_color_change_percent = 30
-" 奇数行の色付け
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
-" 偶数行の色付け
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=yellow
-" インデントの色付け幅
-let g:indent_guides_guide_size = 1
-
-
 " For vim-fugitive
 set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8l:%c%8P
 
@@ -196,3 +202,12 @@ nnoremap <C-]> g<C-]>
 
 " psgi perl syntax
 au BufNewFile,BufRead *.psgi set filetype=perl
+
+" yml yaml syntx
+au BufNewFile,BufRead *.yml set filetype=yaml
+
+let NERDTreeShowHidden = 1
+let file_name = expand("%:p")
+if has('vim_starting') && file_name == ""
+        autocmd VimEnter * execute 'NERDTree ./'
+endif
