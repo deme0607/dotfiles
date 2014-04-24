@@ -4,15 +4,17 @@ set autoindent
 set smartindent
 set expandtab
 set fileencodings=utf8,cp932,euc-jp
-set laststatus=2
 set nocompatible
 set backspace=start,eol,indent
 set hlsearch
 set cursorline
+set t_Co=256
 " highlight cursorline term=reverse cterm=reverse
 syntax on
 
 filetype off
+
+set laststatus=2
 
 set rtp+=~/dotfiles/neobundle.vim
 
@@ -28,6 +30,7 @@ endif
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 " NeoBundle 'Shougo/neosnippet'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', { 'build' : {
     \           'mac' : 'make -f make_mac.mak',
@@ -46,26 +49,17 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'sudo.vim'
 
+NeoBundle 'alpaca-tc/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+
 
 " ----------------------------------
-" For vim-indent-guides
-colorscheme default
-" vim立ち上げ時に自動的にvim-indent-guidesをオンにする。
-let g:indent_guides_enable_on_vim_startup = 1
-" autoで色付けするのはストップ
-let g:indent_guides_auto_colors = 0
-" 色の変化幅（？）パーセンテージ
-let g:indent_guides_color_change_percent = 30
-" 奇数行の色付け
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=red
-hi IndentGuidesOdd guibg=red ctermbg=3
-" 偶数行の色付け
-" autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=yellow
-hi IndentGuidesEven guibg=green ctermbg=4
-" インデントの色付け幅
-let g:indent_guides_guide_size = 1
-
-
+au FileType ruby IndentGuidesEnable
+au FileType ruby let indent_guides_auto_colors = 0
+au FileType ruby autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey   ctermbg=236
+au FileType ruby autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey   ctermbg=237
+au FileType ruby let indent_guides_color_change_percent = 10
+au FileType ruby let indent_guides_guide_size = 1
 
 " {{{
 "if has("lua")
@@ -144,7 +138,13 @@ NeoBundleLazy 'alpaca-tc/alpaca_tags', {
 filetype plugin on
 filetype indent on
 
+if has('gui_macvim')
+else
 colorscheme hybrid
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_symbols = 'fancy'
+set noshowmode
+endif
 
 " ----------------------------------
 " For neocomplcache

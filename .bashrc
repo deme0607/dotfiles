@@ -28,3 +28,5 @@ export EDITOR
 
 alias vi=/usr/local/bin/vim
 alias tar=/usr/local/bin/tar
+
+export GREP_OPTIONS='--color=auto'
