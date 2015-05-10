@@ -206,11 +206,20 @@ set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8
 " vim-tags
 nnoremap <C-]> g<C-]>
 
+" ruby syntax
+au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead Guardfile set filetype=ruby
+au BufNewFile,BufRead config.ru set filetype=ruby
+au BufNewFile,BufRead *.jbuilder set filetype=ruby
+
 " psgi perl syntax
 au BufNewFile,BufRead *.psgi set filetype=perl
+au BufNewFile,BufRead *.perl set filetype=perl
 
 " yml yaml syntx
 au BufNewFile,BufRead *.yml set filetype=yaml
+
+au BufNewFile,BufRead *.js set filetype=javascript
 
 let NERDTreeShowHidden = 1
 let file_name = expand("%:p")
