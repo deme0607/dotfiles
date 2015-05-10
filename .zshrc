@@ -54,8 +54,17 @@ plugins=(git brew bundler jira tmux)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-export PATH="/usr/local/opt/android-sdk/build-tools:/usr/local/opt/android-sdk/tools:/usr/local/opt/android-sdk/platform-tools:/usr/local/opt/android-sdk/build-tools/19.0.1:/Users/shimizu.naoki/.rbenv/shims:/Users/shimizu.naoki/.rbenv/bin:/Users/shimizu.naoki/.plenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin"
+export PATH="/usr/local/opt/android-sdk/build-tools:$PATH"
+export PATH="/usr/local/opt/android-sdk/tools:$PATH"
+export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
+export PATH="/usr/local/opt/android-sdk/build-tools/19.0.1:$PATH"
+export PATH="$HOME/.rbenv/shims:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.plenv/shims:$PATH"
+#export PATH="$HOME/.pyenv/shims:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH="/usr/local/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
