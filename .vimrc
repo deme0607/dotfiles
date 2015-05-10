@@ -61,6 +61,12 @@ au FileType ruby autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkg
 au FileType ruby let indent_guides_color_change_percent = 10
 au FileType ruby let indent_guides_guide_size = 1
 
+augroup HighlightTrailingSpaces
+        autocmd!
+        autocmd VimEnter,WinEnter,ColorScheme * highlight TrailingSpaces term=underline guibg=Red ctermbg=Red
+        autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
+augroup END
+
 " {{{
 "if has("lua")
 "  NeoBundleLazy 'Shougo/neocomplete', { 'autoload' : {
