@@ -7,9 +7,9 @@ set fileencodings=utf8,cp932,euc-jp
 set nocompatible
 set backspace=start,eol,indent
 set hlsearch
-set cursorline
+" set cursorline
 set t_Co=256
-" highlight cursorline term=reverse cterm=reverse
+
 syntax on
 
 filetype off
@@ -29,8 +29,6 @@ endif
 
 NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
-" NeoBundle 'Shougo/neosnippet'
-NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', { 'build' : {
     \           'mac' : 'make -f make_mac.mak',
@@ -67,89 +65,15 @@ augroup HighlightTrailingSpaces
         autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
-" {{{
-"if has("lua")
-"  NeoBundleLazy 'Shougo/neocomplete', { 'autoload' : {
-"        \   'insert' : 1,
-"        \ }}
-"else
-"  NeoBundleLazy 'Shougo/neocomplete', {
-"        \ 'autoload' : {
-"        \   'insert' : 1,
-"        \ },
-"        \ }
-"endif
-
-NeoBundleLazy 'Shougo/neosnippet', {
-      \ 'autoload' : {
-      \   'commands' : ['NeoSnippetEdit', 'NeoSnippetSource'],
-      \   'filetypes' : 'snippet',
-      \   'insert' : 1,
-      \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
-      \ }}
-
-"NeoBundle 'tpope/vim-rails', { 'autoload' : {
-"      \ 'filetypes' : ['haml', 'ruby', 'eruby'] }}
-"
-"NeoBundleLazy 'alpaca-tc/vim-endwise.git', {
-"      \ 'autoload' : {
-"      \   'insert' : 1,
-"      \ }}
-"
-"NeoBundleLazy 'edsono/vim-matchit', { 'autoload' : {
-"      \ 'filetypes': 'ruby',
-"      \ 'mappings' : ['nx', '%'] }}
-"
-"NeoBundleLazy 'basyura/unite-rails', {
-"      \ 'depends' : 'Shougo/unite.vim',
-"      \ 'autoload' : {
-"      \   'unite_sources' : [
-"      \     'rails/bundle', 'rails/bundled_gem', 'rails/config',
-"      \     'rails/controller', 'rails/db', 'rails/destroy', 'rails/features',
-"      \     'rails/gem', 'rails/gemfile', 'rails/generate', 'rails/git', 'rails/helper',
-"      \     'rails/heroku', 'rails/initializer', 'rails/javascript', 'rails/lib', 'rails/log',
-"      \     'rails/mailer', 'rails/model', 'rails/rake', 'rails/route', 'rails/schema', 'rails/spec',
-"      \     'rails/stylesheet', 'rails/view'
-"      \   ]
-"      \ }}
-"
-"NeoBundleLazy 'alpaca-tc/unite-rails_best_practices', {
-"      \ 'depends' : 'Shougo/unite.vim',
-"      \ 'build' : {
-"      \    'mac': 'gem install rails_best_practices',
-"      \    'unix': 'gem install rails_best_practices',
-"      \ },
-"      \ 'autoload': {
-"      \   'unite_sources': 'rails_best_practices'
-"      \ }}
-
-NeoBundle 'taka84u9/vim-ref-ri', {
-      \ 'depends': ['Shougo/unite.vim', 'thinca/vim-ref'],
-      \ 'autoload': { 'filetypes': ['ruby', 'eruby', 'haml'] } }
-
-NeoBundleLazy 'alpaca-tc/neorspec.vim', {
-      \ 'depends' : ['alpaca-tc/vim-rails', 'tpope/vim-dispatch'],
-      \ 'autoload' : {
-      \   'commands' : ['RSpec', 'RSpecAll', 'RSpecCurrent', 'RSpecNearest', 'RSpecRetry']
-      \ }}
-
-NeoBundleLazy 'alpaca-tc/alpaca_tags', {
-      \ 'depends': 'Shougo/vimproc',
-      \ 'autoload' : {
-      \   'commands': ['AlpacaTagsUpdate', 'AlpacaTagsSet', 'AlpacaTagsBundle']
-      \ }}
-
-" }}}
-
 filetype plugin on
 filetype indent on
 
 if has('gui_macvim')
 else
-colorscheme hybrid
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-let g:Powerline_symbols = 'fancy'
-set noshowmode
+        colorscheme hybrid
+        set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+        let g:Powerline_symbols = 'fancy'
+        set noshowmode
 endif
 
 " ----------------------------------
@@ -190,12 +114,6 @@ let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 
 " ----------------------------------
-" For neosnippet
-imap <expr><C-k> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : "\<C-n>"
-smap <C-k> <Plug>(neocomplcache_snippets_expand)
-
-
-" ----------------------------------
 " For vim-quickrun
 nmap <Leader>r <plug>(quickrun)
 
@@ -216,9 +134,10 @@ au BufNewFile,BufRead *.jbuilder set filetype=ruby
 au BufNewFile,BufRead *.psgi set filetype=perl
 au BufNewFile,BufRead *.perl set filetype=perl
 
-" yml yaml syntx
+" yml yaml syntax
 au BufNewFile,BufRead *.yml set filetype=yaml
 
+" js syntax
 au BufNewFile,BufRead *.js set filetype=javascript
 
 let NERDTreeShowHidden = 1
