@@ -84,3 +84,15 @@ export EDITOR='/usr/bin/vi'
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+source ~/perl5/perlbrew/etc/bashrc
+
+eval "$(rbenv init - zsh)"
+
+if [ -f $HOME/.homebrew_api_token ];then
+        source $HOME/.homebrew_api_token
+fi
+
+if [ -f $HOME/.ssh/id_rsa.gateway ];then
+        ssh-add $HOME/.ssh/id_rsa.gateway
+fi
