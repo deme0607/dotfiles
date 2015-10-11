@@ -19,6 +19,9 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
 export MANPATH="/usr/local/man:$MANPATH"
 
+export EXENV_ROOT="/usr/local/var/exenv"
+if which exenv > /dev/null; then eval "$(exenv init -)"; fi
+
 # language config
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
