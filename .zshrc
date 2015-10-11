@@ -55,3 +55,9 @@ fi
 if [ -f $HOME/.ssh/id_rsa.gateway ];then
         ssh-add $HOME/.ssh/id_rsa.gateway
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/Users/shimizu.naoki/work/work/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/Users/shimizu.naoki/work/work/google-cloud-sdk/completion.zsh.inc'
