@@ -4,10 +4,9 @@ set autoindent
 set smartindent
 set expandtab
 set fileencodings=utf8,cp932,euc-jp
-set nocompatible
 set backspace=start,eol,indent
 set hlsearch
-" set cursorline
+set term=screen-256color
 set t_Co=256
 
 syntax on
@@ -19,15 +18,17 @@ set laststatus=2
 set rtp+=~/dotfiles/neobundle.vim
 
 if has('vim_starting')
+    set nocompatible
     set runtimepath+=~/dotfiles/neobundle.vim
-    call neobundle#rc(expand('~/.vim/bundle/'))
 endif
 
 if filereadable($HOME . '/.vimrc.local')
     source $HOME/.vimrc.local
 endif
 
-NeoBundle 'Shougo/neobundle.vim'
+call neobundle#begin(expand('~/.vim/bundle/'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc', { 'build' : {
@@ -35,21 +36,37 @@ NeoBundle 'Shougo/vimproc', { 'build' : {
     \           'unix' : 'make -f make_unix.mak',
     \       },
     \   }
+NeoBundle 'Shougo/vimfiler'
 NeoBundle 'petdance/vim-perl'
 NeoBundle 'hotchpotch/perldoc-vim'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'rking/ag.vim'
 NeoBundle 'szw/vim-tags'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'sudo.vim'
+NeoBundle 'tpope/vim-endwise'
+
+NeoBundle 'junegunn/vim-easy-align'
 
 NeoBundle 'alpaca-tc/alpaca_powertabline'
 NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 
+NeoBundle 'plasticboy/vim-markdown'
+NeoBundle 'kannokanno/previm'
+NeoBundle 'tyru/open-browser.vim'
+
+NeoBundle 'fatih/vim-go'
+
+call neobundle#end()
+
+NeoBundleCheck
+
+vmap <Enter> <Plug>(EasyAlign)
+
+au BufRead,BufNewFile *.md set filetype=markdown
 
 " ----------------------------------
 au FileType ruby IndentGuidesEnable
@@ -65,16 +82,23 @@ augroup HighlightTrailingSpaces
         autocmd VimEnter,WinEnter * match TrailingSpaces /\s\+$/
 augroup END
 
+function! ZenkakuSpace()
+        highlight ZenkakuSpace cterm=underline ctermfg=red gui=underline guifg=darkgrey
+endfunction
+
 filetype plugin on
 filetype indent on
 
 if has('gui_macvim')
+        " for Mac Vim
 else
-        colorscheme hybrid
-        set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-        let g:Powerline_symbols = 'fancy'
-        set noshowmode
+        " not for Mac Vim
 endif
+
+colorscheme hybrid
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+let g:Powerline_symbols = 'fancy'
+set noshowmode
 
 " ----------------------------------
 " For neocomplcache
@@ -129,6 +153,8 @@ au BufNewFile,BufRead Gemfile set filetype=ruby
 au BufNewFile,BufRead Guardfile set filetype=ruby
 au BufNewFile,BufRead config.ru set filetype=ruby
 au BufNewFile,BufRead *.jbuilder set filetype=ruby
+au BufNewFile,BufRead *.schema set filetype=ruby
+au BufNewFile,BufRead *.feature set filetype=ruby
 
 " psgi perl syntax
 au BufNewFile,BufRead *.psgi set filetype=perl
@@ -140,8 +166,7 @@ au BufNewFile,BufRead *.yml set filetype=yaml
 " js syntax
 au BufNewFile,BufRead *.js set filetype=javascript
 
-let NERDTreeShowHidden = 1
 let file_name = expand("%:p")
 if has('vim_starting') && file_name == ""
-        autocmd VimEnter * execute 'NERDTree ./'
+        autocmd VimEnter * execute 'VimFiler'
 endif
