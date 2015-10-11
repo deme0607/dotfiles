@@ -7,6 +7,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # aliases
 alias clcache="sudo dscacheutil -flushcache"
+alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias be='bundle exec'
 
 # environment valiables config
 export PATH="/usr/local/opt/android-sdk/build-tools:$PATH"
@@ -34,7 +36,7 @@ export LC_CTYPE=en_US.UTF-8
 # else
 #   export EDITOR='mvim'
 # fi
-export EDITOR='/usr/bin/vi'
+export EDITOR='/usr/bin/vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
