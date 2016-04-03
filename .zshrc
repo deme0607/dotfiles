@@ -53,6 +53,11 @@ source ~/perl5/perlbrew/etc/bashrc
 
 eval "$(rbenv init - zsh)"
 
+eval "$(hub alias -s)"
+
+fpath=(~/.zsh/completions $fpath)
+autoload -U compinit && compinit
+
 if [ -f $HOME/.homebrew_api_token ];then
         source $HOME/.homebrew_api_token
 fi

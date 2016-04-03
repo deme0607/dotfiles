@@ -48,6 +48,8 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'sudo.vim'
 NeoBundle 'tpope/vim-endwise'
+NeoBundle "osyo-manga/shabadou.vim"
+NeoBundle "osyo-manga/vim-watchdogs"
 
 NeoBundle 'junegunn/vim-easy-align'
 
@@ -66,7 +68,6 @@ NeoBundleCheck
 
 vmap <Enter> <Plug>(EasyAlign)
 
-au BufRead,BufNewFile *.md set filetype=markdown
 
 " ----------------------------------
 au FileType ruby IndentGuidesEnable
@@ -86,8 +87,7 @@ function! ZenkakuSpace()
         highlight ZenkakuSpace cterm=underline ctermfg=red gui=underline guifg=darkgrey
 endfunction
 
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 if has('gui_macvim')
         " for Mac Vim
@@ -136,11 +136,16 @@ if !exists('g:neocomplcache_keyword_patterns')
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-
 " ----------------------------------
 " For vim-quickrun
 nmap <Leader>r <plug>(quickrun)
 
+let g:quickrun_config = {
+\   "ruby/watchdogs_checker" : {
+\       "type" : "watchdogs_checker/rubocop"
+\   }
+\}
+call watchdogs#setup(g:quickrun_config)
 
 " For vim-fugitive
 set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8l:%c%8P
@@ -148,23 +153,6 @@ set statusline=%f\ [%{&fenc==''?&enc:&fenc}][%{&ff}]%{fugitive#statusline()}%=%8
 " vim-tags
 nnoremap <C-]> g<C-]>
 
-" ruby syntax
-au BufNewFile,BufRead Gemfile set filetype=ruby
-au BufNewFile,BufRead Guardfile set filetype=ruby
-au BufNewFile,BufRead config.ru set filetype=ruby
-au BufNewFile,BufRead *.jbuilder set filetype=ruby
-au BufNewFile,BufRead *.schema set filetype=ruby
-au BufNewFile,BufRead *.feature set filetype=ruby
-
-" psgi perl syntax
-au BufNewFile,BufRead *.psgi set filetype=perl
-au BufNewFile,BufRead *.perl set filetype=perl
-
-" yml yaml syntax
-au BufNewFile,BufRead *.yml set filetype=yaml
-
-" js syntax
-au BufNewFile,BufRead *.js set filetype=javascript
 
 let file_name = expand("%:p")
 if has('vim_starting') && file_name == ""
