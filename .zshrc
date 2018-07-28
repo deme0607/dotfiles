@@ -53,6 +53,9 @@ eval "$(rbenv init - zsh)"
 
 eval "$(hub alias -s)"
 
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
+
 fpath+=(~/.zsh/completions)
 autoload -U compinit && compinit
 
@@ -60,9 +63,14 @@ if [ -f $HOME/.homebrew_api_token ];then
         source $HOME/.homebrew_api_token
 fi
 
+source '/usr/local/share/zsh/site-functions'
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/shimizu.naoki/work/work/google-cloud-sdk/path.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/Users/shimizu.naoki/work/work/google-cloud-sdk/completion.zsh.inc'
+source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+
+source ~/.phpbrew/bashrc
+
+setopt nonomatch
