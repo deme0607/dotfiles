@@ -21,5 +21,6 @@ augroup filetypedetect
   au BufNewFile,BufRead *.js set filetype=javascript
 
   " php
+  au BufNewFile,BufRead *.twig set filetype=html
   au BufNewFile,BufRead *.php set filetype=php
 augroup END
