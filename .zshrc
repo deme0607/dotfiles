@@ -25,8 +25,11 @@ export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
-export EXENV_ROOT="/usr/local/var/exenv"
-if which exenv > /dev/null; then eval "$(exenv init -)"; fi
+if [ -d ~/.local/bin ]; then
+  export PATH="$PATH":~/.local/bin
+  powerline-daemon -q
+  . ~/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+fi
 
 # language config
 export LANG=en_US.UTF-8
