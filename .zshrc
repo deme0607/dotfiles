@@ -74,3 +74,22 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.
 source ~/.phpbrew/bashrc
 
 setopt nonomatch
+
+bindkey '^[' peco-src
+function peco-src() {
+        local src=$(ghq list --full-path | peco --query "$LBUFFER")
+        if [ -n "$src" ]; then
+                BUFFER="cd $src"
+                zle accept-line
+        fi
+
+        zle -R -c
+}
+zle -N peco-src
+
+function gcfg() {
+  configuration_name=$(gcloud config configurations list | peco | awk '{print $1}')
+  if [ -n "${configuration_name}" ]; then
+    gcloud config configurations activate "${configuration_name}"
+  fi
+}
