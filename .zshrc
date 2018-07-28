@@ -35,8 +35,6 @@ fi
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-export LD_LIBRARY_PATH=/usr/local/Cellar/kakasi/2.3.6/lib/:/usr/local/Cellar/libmarisa/0.2.4/lib/
-
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -51,8 +49,6 @@ export EDITOR='/usr/bin/vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-source ~/perl5/perlbrew/etc/bashrc
-
 eval "$(rbenv init - zsh)"
 
 eval "$(hub alias -s)"
@@ -64,9 +60,6 @@ if [ -f $HOME/.homebrew_api_token ];then
         source $HOME/.homebrew_api_token
 fi
 
-if [ -f $HOME/.ssh/id_rsa.gateway ];then
-        ssh-add $HOME/.ssh/id_rsa.gateway
-fi
 
 # The next line updates PATH for the Google Cloud SDK.
 source '/Users/shimizu.naoki/work/work/google-cloud-sdk/path.zsh.inc'
