@@ -53,7 +53,7 @@ eval "$(rbenv init - zsh)"
 
 eval "$(hub alias -s)"
 
-fpath=(~/.zsh/completions $fpath)
+fpath+=(~/.zsh/completions)
 autoload -U compinit && compinit
 
 if [ -f $HOME/.homebrew_api_token ];then
