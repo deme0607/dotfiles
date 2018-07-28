@@ -16,18 +16,12 @@ alias be='bundle exec'
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # environment valiables config
-export GOPATH="$HOME/go"
-export PATH="/usr/local/opt/android-sdk/build-tools:$PATH"
-export PATH="/usr/local/opt/android-sdk/tools:$PATH"
-export PATH="/usr/local/opt/android-sdk/platform-tools:$PATH"
-export PATH="/usr/local/opt/android-sdk/build-tools/19.0.1:$PATH"
-export PATH="$HOME/.rbenv/shims:$PATH"
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.plenv/shims:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+export RBENV_ROOT="/usr/local/opt/rbenv"
+export GOPATH="$HOME/go"
+export PATH="$RBENV_ROOT/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
