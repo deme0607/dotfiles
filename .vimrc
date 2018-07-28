@@ -22,6 +22,8 @@ if has('vim_starting')
     set runtimepath+=~/dotfiles/neobundle.vim
 endif
 
+source $HOME/.vim/*.vim
+
 if filereadable($HOME . '/.vimrc.local')
     source $HOME/.vimrc.local
 endif
