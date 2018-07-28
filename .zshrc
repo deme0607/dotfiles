@@ -14,6 +14,7 @@ alias clcache="sudo dscacheutil -flushcache"
 alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 alias be='bundle exec'
 
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # environment valiables config
 export GOPATH="$HOME/go"
 export PATH="/usr/local/opt/android-sdk/build-tools:$PATH"
