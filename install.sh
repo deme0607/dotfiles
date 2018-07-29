@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Install Modules
-#if [ `uname` = "Darwin" ]; then
-#    brew install bash-completion
-#elif [ `uname` = "Linux" ]; then
-#    sudo yum install bash-completion
-#fi
-
-
-# Create symbolic links
-#FILES=(.bashrc .vim .vimrc .tmux.conf)
 FILES=(.zshrc .vim .vimrc .tmux.conf)
 
 for file in ${FILES[@]}
@@ -26,10 +16,4 @@ do
     echo "Create symbolic link: $HOME/$file"
     ln -s $HOME/dotfiles/$file $HOME/$file
 done
-
-# Update Neobundle
-if [ ! -d $HOME/.vim/bundle ]; then
-    git submodule init
-    git submodule update
-fi
 
