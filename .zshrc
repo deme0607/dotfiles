@@ -10,18 +10,10 @@ fi
 fpath+=("/usr/local/share/zsh-completions")
 
 # aliases
-alias clcache="sudo dscacheutil -flushcache"
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim "$@"'
-alias be='bundle exec'
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # environment valiables config
 export PATH="/usr/local/bin:$PATH"
-export RBENV_ROOT="/usr/local/opt/rbenv"
-export GOPATH="$HOME/go"
-export PATH="$RBENV_ROOT/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/work"
 export PATH="$PATH:$GOPATH/bin"
 export MANPATH="/usr/local/man:$MANPATH"
 
@@ -35,26 +27,9 @@ fi
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
 export EDITOR='/usr/bin/vim'
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-eval "$(rbenv init - zsh)"
-
 eval "$(hub alias -s)"
-
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
 
 fpath+=(~/.zsh/completions)
 autoload -U compinit && compinit
@@ -70,8 +45,6 @@ source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.in
 
 # The next line enables shell command completion for gcloud.
 source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-
-source ~/.phpbrew/bashrc
 
 setopt nonomatch
 
