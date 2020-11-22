@@ -24,7 +24,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
 
-call neobundle#end()
 call vundle#end()
 filetype plugin indent on
 
@@ -37,7 +36,7 @@ endif
 vmap <Enter> <Plug>(EasyAlign)
 
 " ----------------------------------
-au FileType ruby IndentGuidesEnable
+" au FileType ruby IndentGuidesEnable
 au FileType ruby let indent_guides_auto_colors = 0
 au FileType ruby autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=darkgrey   ctermbg=236
 au FileType ruby autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey   ctermbg=237
@@ -62,7 +61,6 @@ else
         " not for Mac Vim
 endif
 
-colorscheme hybrid
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 let g:Powerline_symbols = 'fancy'
 set noshowmode
